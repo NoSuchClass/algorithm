@@ -1,4 +1,4 @@
-package com.bitongchong.test;
+package com.bitongchong.classicalproblemplus;
 
 import java.util.HashMap;
 import java.util.Stack;
@@ -46,8 +46,8 @@ public class Code_3_1_MaxTree {
         while (!stack.isEmpty()) {
             popStackSetMap(stack, lBigMap);
         }
-
-        for (int i = 0; i < nodeArr.length; i++) {
+        // 注意这儿一定要从尾到头，写代码的时候注意
+        for (int i = nodeArr.length - 1; i > -1; i--) {
             Node curNode = nodeArr[i];
             while ((!stack.isEmpty()) && stack.peek().value < curNode.value) {
                 popStackSetMap(stack, rBigMap);
@@ -58,6 +58,7 @@ public class Code_3_1_MaxTree {
             popStackSetMap(stack, rBigMap);
         }
 
+        // 这个也太强了吧，多看几遍。。。
         Node head = null;
         for (int i = 0; i < nodeArr.length; i++) {
             Node curNode = nodeArr[i];
@@ -98,9 +99,25 @@ public class Code_3_1_MaxTree {
         }
     }
 
+    public static void printPreOrder(Node head) {
+        if (head == null) return;
+        System.out.println(head.value);
+        printPreOrder(head.left);
+        printPreOrder(head.right);
+    }
+
+    public static void printInOrder(Node head) {
+        if (head == null) return;
+        printInOrder(head.left);
+        System.out.println(head.value);
+        printInOrder(head.right);
+    }
+
     public static void main(String[] args) {
-        int[] arr = {1, 7, 9, 2, 6, 0};
-        System.out.println(getMaxTree(arr));
+        int[] arr = {1, 4, 7, 6};
+        printPreOrder(getMaxTree(arr));
+        System.out.println("-----------------------");
+        printInOrder(getMaxTree(arr));
     }
 
     // 这儿可以直接通过一个大根堆来做，但是为了熟悉单调栈，这儿直接使用单调栈的思想来做
