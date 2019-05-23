@@ -1,11 +1,11 @@
 package com.bitongchong.leetcode;
 
-public class Code_04_SortList {
+public class Code_148_SortList {
     public static void main(String[] args) {
         ListNode node = new ListNode(3);
         node.next = new ListNode(9);
         node.next.next = new ListNode(1);
-        ListNode node1 = new Code_04_SortList().sortList(node);
+        ListNode node1 = new Code_148_SortList().sortList(node);
         while (node1 != null) {
             System.out.println(node1.val);
             node1 = node1.next;
