@@ -3,7 +3,7 @@ package com.bitongchong.leetcode;
 import java.util.LinkedList;
 import java.util.Queue;
 
-public class Code_01_MinimumDepthOfBinaryTree {
+public class Code_111_MinimumDepthOfBinaryTree {
     public int run(TreeNode root) {
         if (root == null) return 0;
         int res = 1;
