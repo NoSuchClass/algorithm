@@ -1,4 +1,4 @@
-package com.bitongchong.nowcodeplus;
+package com.bitongchong.classicalproblemplus;
 
 /**问题描述
  * 输入两个字符串，寻找第一个字符串中是否有与第二个字符串相同的子串

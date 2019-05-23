@@ -1,4 +1,4 @@
-package com.bitongchong.nowcodeplus;
+package com.bitongchong.classicalproblemplus;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
