@@ -20,7 +20,7 @@ public class Code_01_MinimumDepthOfBinaryTree {
             if (node.right != null) {
                 queue.add(node.right);
             }
-            if (size == 0){
+            if (size == 0) {
                 res++;
                 size = queue.size();
             }
@@ -32,7 +32,6 @@ public class Code_01_MinimumDepthOfBinaryTree {
         TreeNode left;
         TreeNode right;
         int val;
-
         TreeNode(int val) {
             this.val = val;
         }
