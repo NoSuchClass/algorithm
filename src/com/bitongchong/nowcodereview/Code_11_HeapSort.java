@@ -1,6 +1,6 @@
 package com.bitongchong.nowcodereview;
 
-import com.bitongchong.nowcode.Code_1_1_BubbleSort;
+import com.bitongchong.classicalproblem.Code_1_1_BubbleSort;
 
 public class Code_11_HeapSort {
 	public static void heapSort(int[] arr) {
