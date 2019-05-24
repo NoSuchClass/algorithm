@@ -92,11 +92,8 @@ public class Code_3_1_MaxTree {
 
     public static void popStackSetMap(Stack<Node> stack, HashMap<Node, Node> map) {
         Node popNode = stack.pop();
-        if (stack.isEmpty()) {
-            map.put(popNode, null);
-        } else {
-            map.put(popNode, stack.peek());
-        }
+        Node putnode = stack.isEmpty() ? null : stack.peek();
+        map.put(popNode, putnode);
     }
 
     public static void printPreOrder(Node head) {
