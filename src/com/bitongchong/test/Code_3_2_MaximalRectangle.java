@@ -8,7 +8,7 @@ public class Code_3_2_MaximalRectangle {
             for (int j = 0; j < map[0].length; j++) {
                 arr[j] = map[i][j] == 0 ? 0 : arr[j] + 1;
             }
-
         }
+        return 0;
     }
 }

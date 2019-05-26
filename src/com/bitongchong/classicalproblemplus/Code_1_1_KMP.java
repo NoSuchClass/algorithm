@@ -49,6 +49,6 @@ public class Code_1_1_KMP {
     }
 
     public static void main(String[] args){
-        System.out.println(getIndexOf("eeelijunzhe12", "lijunzhe1"));
+        System.out.println(getIndexOf("eeelijunzhe122222222222222222222222222222222222", "lijunzhe1222222222222222222222222222222222222222222222"));
     }
 }
