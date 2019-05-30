@@ -1,7 +1,8 @@
 package com.bitongchong.classicalproblem;
 
 //冒泡排序：循环n次，每次都按顺序地对数组中的数进行两两比较，大的放后面，小的放前面，
-//这样在一次循环之后，最大的数字就一定会放在数组的最后面，这样下一次循环的时候，就不循环这个数
+//这样在一次循环之后，最大的数字就一定会放在数组的最后面，这样下一次循环的时候，
+// 就不循环这个数
 public class Code_1_1_BubbleSort {
 	public static void bubbleSort1(int[] arr) {
 		if (arr == null || arr.length == 1)
