@@ -1,49 +1,31 @@
 package com.bitongchong.test;
 
+import java.util.Scanner;
+
 public class Solution {
-    /**
-     * 刘悦河
-     * @param 201603653
-     */
-    public static void main(String [] args){
-        int [] randArr = new int[]{7,8,58,877,54,52,1};
-        int result = findMinK(randArr, 0, randArr.length - 1, 4);
-        System.out.print(result);
+    static int[] arr1 = new int[10];
+    static int[] arr2 = new int[10];
+    static int total;
+    static Scanner scanner = new Scanner(System.in);
+
+    public static void main(String[] args) {
+        total = scanner.nextInt();
+        int n = scanner.nextInt();
+        arr1[1] = 1;
+        for (int i = 2; i <= n; i++) arr1[i] = scanner.nextInt();
+        System.out.println(func(n));
     }
 
-    public static int findMinK(int [] arr, int low, int high, int k){
-        int index = func(arr, low, high);
-        if(index == k) return arr[index];
-        if(index < k){
-            return findMinK(arr, index + 1, high, k);
-        }else{
-            return findMinK(arr, low, index - 1, k);
+    private static int func(int n) {
+        for (int i = 1; i <= total; i++) {
+            int temp = Integer.MAX_VALUE;
+            int j = 1;
+            while (j <= n && i >= arr1[j]) {
+                temp = Math.min(arr2[i - arr1[j]], temp);
+                j++;
+            }
+            arr2[i] = temp + 1;
         }
-    }
-
-    public static int func(int [] arr, int left, int right){
-        while(left < right){
-            while(left < right && arr[left] <= arr[right]){
-                right--;
-            }
-            if(left < right){
-                swap(arr, left, right);
-                left++;
-            }
-            while(left < right && arr[left] <= arr[right]){
-                left++;
-            }
-            if(left < right){
-                swap(arr, left, right);
-                right--;
-            }
-        }
-        return left;
-    }
-
-    public static void swap(int[] arr, int left, int right){
-        int tmp = arr[left];
-        arr[left] = arr[right];
-        arr[right] = tmp;
+        return arr2[total];
     }
 }
