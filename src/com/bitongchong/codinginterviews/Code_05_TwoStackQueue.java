@@ -6,25 +6,21 @@ import java.util.Stack;
  * 题目描述:
  * 用两个栈来实现一个队列，完成队列的Push和Pop操作。 队列中的元素为int类型。
  */
-public class Code_03_TwoStackQueue {
+public class Code_05_TwoStackQueue {
     Stack<Integer> stack1 = new Stack<Integer>();
     Stack<Integer> stack2 = new Stack<Integer>();
-    
+
     public void push(int node) {
-        if(stack1.isEmpty() && !stack2.isEmpty()){
-            while(!stack2.isEmpty()){
-                stack1.push(stack2.pop());
-            }
-        }
         stack1.push(node);
     }
-    
+
     public int pop() {
-        if(stack2.isEmpty()){
-            if(stack1.isEmpty()){
-                throw new RuntimeException("the queue is empty");
-            }
-            while(!stack1.isEmpty()){
+        // 注意一下小细节，思考一下异常会完善很多
+        if (stack1.isEmpty()) {
+            throw new RuntimeException("the queue is empty");
+        }
+        if (stack2.isEmpty()) {
+            while (!stack1.isEmpty()) {
                 stack2.push(stack1.pop());
             }
         }
