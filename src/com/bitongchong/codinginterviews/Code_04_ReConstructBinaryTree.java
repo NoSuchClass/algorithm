@@ -27,7 +27,7 @@ public class Code_04_ReConstructBinaryTree {
                 in, 0, in.length - 1);
     }
 
-    public TreeNode func(int[] pre, int preStart, int preEnd, int[] in,
+    private TreeNode func(int[] pre, int preStart, int preEnd, int[] in,
                          int inStart, int inEnd) {
         if (preStart > preEnd || inStart > inEnd) {
             return null;
