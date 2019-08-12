@@ -1,9 +1,10 @@
 package com.bitongchong.classicalproblem;
 
-//递归排序
+// 递归排序
 public class Code_1_4_Recursive {
 	public static int getMax(int left, int right, int[] arr) {
 		if (right == left) {
+			int a = 9;
 			return arr[right];
 		}
 		// 递归循环的思路：将一个数据样本分为两份（也可以认为是执行两个不同的任务，这两个不同的任务里面又有着两个可以分开执行的不同的任务
