@@ -15,22 +15,22 @@ public class BagQuestion1 {
     /**
      * 需要装的物品重量
      */
-    private static int[] goods = {1, 61, 1, 1, 1, 1, 0};
+    private static int[] items = {1, 4, 1, 1, 1, 1, 10};
 
-    private static void maxNumberWay(int i, int curMaxWeight) {
-        // i == goods.length：代表已经将所有物品装完，curMaxWeight == maxWeightAvail：代表已到达最大承重
+    private static void maxNumberWay(int index, int curWeight) {
+        // index == goods.length：代表已经将所有物品装完，curMaxWeight == maxWeightAvail：代表已到达最大承重
         // 包里能够装的最重重量
         int maxWeightAvail = 9;
-        if (i == goods.length || curMaxWeight == maxWeightAvail) {
-            maxWeightRes = Math.max(maxWeightRes, curMaxWeight);
+        if (index == items.length || curWeight == maxWeightAvail) {
+            maxWeightRes = Math.max(maxWeightRes, curWeight);
             return;
         }
         // 因为遇到一个物品总共有两种选择：1、不装第i个物品
-        maxNumberWay(i + 1, curMaxWeight);
+        maxNumberWay(index + 1, curWeight);
         ///2、如果装下这个物品不会到达最大承重，那么装第i个物品
-        if (curMaxWeight + goods[i] <= maxWeightAvail) {
-            maxNumberWay(i + 1, curMaxWeight + goods[i]);
-        }
+
+            maxNumberWay(index + 1, curWeight + items[index]);
+
     }
 
     public static void main(String[] args) {
