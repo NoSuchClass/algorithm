@@ -1,5 +1,9 @@
 package com.bitongchong.leetcode;
 
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Objects;
+
 /**
  * @author liuyuehe
  * @description 两数之和
@@ -17,6 +21,26 @@ public class Code_001_TwoSum {
                     return new int[]{i, j};
                 }
             }
+        }
+        return null;
+    }
+
+    /**
+     * 使用空间换时间
+     * @param nums 输入数组
+     * @param target 目标数字
+     * @return 结果
+     */
+    public int[] twoSumPlus(int[] nums, int target) {
+        if (nums == null) {
+            return null;
+        }
+        Map<Integer, Integer> map = new HashMap<Integer, Integer>(nums.length);
+        for (int i = 0; i < nums.length; i++) {
+            if (map.get(target - nums[i]) != null) {
+                return new int[]{map.get(target - nums[i]), i};
+            }
+            map.put(nums[i], i);
         }
         return null;
     }
