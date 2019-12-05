@@ -61,7 +61,7 @@ public class Code_015_ThreeSum {
     }
 
     public static void main(String[] args) {
-        List<List<Integer>> lists = new Code_015_ThreeSum().threeSum(new int[]{-1, 0, 1, 2, -1, -4});
+        List<List<Integer>> lists = new Code_015_ThreeSum().threeSum(new int[]{0, 0, 0});
         for (List<Integer> integers :
                 lists) {
             System.out.println(integers);
