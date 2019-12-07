@@ -21,8 +21,10 @@ public class Code_015_ThreeSum {
         int rIndex = 0;
         // i < nums.length - 2; 这是因为题目是三数之和
         for (int i = 0; i < nums.length - 2; i++) {
-            // 如果第一个数 > 0的话，它前面那个数也是 >0的，就不可能sum = 0
-            if (nums[i] > 0) {
+            // 判断当前最大循环的最小值是否大于目标值，如果大于的话，就没有必要继续循环，
+            // 当然，由于这儿是和为零，那么直接判断num[i]是否 > 0即可
+            int minRes = nums[i] + nums[i + 1] + nums[i + 2];
+            if (minRes > 0) {
                 break;
             }
             // 这儿是去重， 比如 -1 -1 0 1 2 ，当i = 1时，如果不去重，那么会出现两个 -1 0 1
