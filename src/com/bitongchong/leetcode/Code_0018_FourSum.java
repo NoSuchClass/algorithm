@@ -16,17 +16,16 @@ public class Code_0018_FourSum {
         if (nums == null || nums.length < 4) {
             return res;
         }
-        if (Arrays.stream(nums).allMatch(e -> e == target)) {
-            res.add(Arrays.asList(0,0,0,0));
-            return res;
-        }
         Arrays.sort(nums);
         // 做题的时候命名可以简单一点，可能不能满足编程风格，但是命名过长头都是大的
         int lIndex = 0;
         int rIndex = 0;
         // i < nums.length - 3; 这是因为题目是四数之和
         for (int i = 0; i < nums.length - 3; i++) {
-            if (nums[i] > target) {
+            // 这儿也不能判断nums[j] > target, 因为这是4位数的判断，nums[j]不像三位数判断一样是最小的数
+            // 每个大循环都判断一下当前最小的值是否大于目标数，如果大的话，就不用判断了
+            int minRes = nums[i] + nums[i + 1] + nums[i + 2] + nums[i + 3];
+            if (minRes > target) {
                 break;
             }
             // 这儿是去重， 比如 -1 -1 0 1 2 ，当i = 1时，如果不去重，那么会出现两个 -1 0 1
@@ -34,14 +33,12 @@ public class Code_0018_FourSum {
                 continue;
             }
             for (int j = i + 1; j < nums.length - 2; j++) {
-                // 如果第一个数 > 0的话，它前面那个数也是 >0的，就不可能sum = 0
-                if (nums[j] > target) {
-                    break;
-                }
-                if (j > 0 && nums[j] == nums[j - 1]) {
+                // 这儿不能判断nums[j] > target, 因为这是4位数的判断，nums[j]不像三位数判断一样是最小的数
+                if (j > i + 1 && nums[j] == nums[j - 1]) {
                     continue;
                 }
-                lIndex = i + 1;
+                // 注意这儿是内层的 j + 1，而不是 i + 1
+                lIndex = j + 1;
                 rIndex = nums.length - 1;
                 while (lIndex < rIndex) {
                     int calcRes = nums[i] + nums[j] + nums[lIndex] + nums[rIndex];
@@ -62,9 +59,15 @@ public class Code_0018_FourSum {
                     }
                     // 下面两种情况也可以去重
                     if (calcRes < target) {
+                        while (lIndex < rIndex && nums[lIndex] == nums[lIndex + 1]) {
+                            lIndex++;
+                        }
                         lIndex++;
                     }
                     if (calcRes > target) {
+                        while (rIndex > lIndex && nums[rIndex] == nums[rIndex - 1]) {
+                            rIndex--;
+                        }
                         rIndex--;
                     }
                 }
@@ -74,7 +77,7 @@ public class Code_0018_FourSum {
     }
 
     public static void main(String[] args) {
-        List<List<Integer>> lists = new Code_0018_FourSum().fourSum(new int[]{0, 0, 0, 0}, 0);
+        List<List<Integer>> lists = new Code_0018_FourSum().fourSum(new int[]{1, -2, -5, -4, -3, 3, 3, 5}, -11);
         for (List<Integer> integers :
                 lists) {
             System.out.println(integers);
