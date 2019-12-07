@@ -1,7 +1,5 @@
 package com.bitongchong.leetcode;
 
-import java.util.List;
-
 /**
  * @author liuyuehe
  * @description 两数之和
