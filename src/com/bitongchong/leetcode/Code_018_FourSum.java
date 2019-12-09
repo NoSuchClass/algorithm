@@ -9,7 +9,7 @@ import java.util.List;
  * @description 四数之和
  * @date 2019/12/4
  */
-public class Code_0018_FourSum {
+public class Code_018_FourSum {
     public List<List<Integer>> fourSum(int[] nums, int target) {
         List<List<Integer>> res = new ArrayList<>();
 
@@ -77,7 +77,7 @@ public class Code_0018_FourSum {
     }
 
     public static void main(String[] args) {
-        List<List<Integer>> lists = new Code_0018_FourSum().fourSum(new int[]{1, -2, -5, -4, -3, 3, 3, 5}, -11);
+        List<List<Integer>> lists = new Code_018_FourSum().fourSum(new int[]{1, -2, -5, -4, -3, 3, 3, 5}, -11);
         for (List<Integer> integers :
                 lists) {
             System.out.println(integers);
