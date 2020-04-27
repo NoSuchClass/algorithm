@@ -1,7 +1,5 @@
 package com.bitongchong.leetcode;
 
-import java.util.Arrays;
-
 /**
  * @author liuyuehe
  * @date 2020/4/23 19:20
@@ -29,5 +27,34 @@ public class Code_300_LongestIncreasingSubsequence {
             res = Math.max(dp[i], res);
         }
         return res;
+    }
+
+    public int lengthOfLIS2(int[] nums) {
+        if (nums.length == 0) {
+            return 0;
+        }
+        // 这个top只存储每堆扑克最上面的那一个扑克
+        int[] top = new int[nums.length];
+        // 这个的作用是记录当前的所有扑克被分为多少堆，用作二分时的右边界
+        int piles = 0;
+        for (int poker : nums) {
+            int left = 0;
+            int right = piles;
+            while (left < right) {
+                int mid = (left + right) / 2;
+                if (top[mid] < poker) {
+                    left = mid;
+                } else if (top[mid] > poker) {
+                    right = mid - 1;
+                } else {
+                    right = mid;
+                }
+            }
+            if (left == piles) {
+                piles++;
+            }
+            top[left] = poker;
+        }
+        return piles;
     }
 }
