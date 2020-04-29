@@ -22,7 +22,7 @@ public class Code_034_FindFirstAndLastPositionOfElement {
         //              此时需要判断nums[left]==target
         // 第二种情况 nums=[5], target=8：触发nums[mid] < target条件，left向右越界数组，跳出while，代表所有数组元素都小于target
         //              此时需要判断left==nums.length
-        // 第三种情况 nums=[5,8], target=8：触发nums[mid] == target条件，right右移，令right<left，跳出while，代表查找到左边界
+        // 第三种情况 nums=[8,9], target=8：触发nums[mid] == target条件，right右移，令right<left，跳出while，代表查找到左边界
         //              left，直接返回
         while(left <= right) {
             int mid = right - (right - left) / 2;
