@@ -28,4 +28,15 @@ public class Code_122_BestTimeToBuyAndSellStockII {
         }
         return maxprofit;
     }
+
+    public int maxProfit3(int[] prices) {
+        int[][] dp = new int[prices.length][2];
+        int dp_i_0 = 0;
+        int dp_i_1 = -prices[0];
+        for (int i = 1; i < prices.length; i++) {
+            dp_i_0 = Math.max(dp_i_0, dp_i_1 + prices[i]);
+            dp_i_1 = Math.max(dp_i_1, dp_i_0 - prices[i]);
+        }
+        return dp_i_0;
+    }
 }
