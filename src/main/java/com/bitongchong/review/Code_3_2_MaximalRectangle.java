@@ -1,4 +1,4 @@
-package com.bitongchong.test;
+package com.bitongchong.review;
 
 public class Code_3_2_MaximalRectangle {
     public static int maxRecSize(int[][] map) {

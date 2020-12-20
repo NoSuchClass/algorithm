@@ -1,5 +1,8 @@
 package com.bitongchong.leetcode;
 
+import java.util.LinkedList;
+import java.util.List;
+
 /**
  * @author liuyuehe
  * @date 2020/6/19 9:49
@@ -33,5 +36,9 @@ public class Code_125_ValidPalindrome {
 
     public static void main(String[] args){
         System.out.println(new Code_125_ValidPalindrome().isPalindrome("A man, a plan, a canal: Panama"));
+        LinkedList<Integer> list = new LinkedList<>();
+        list.add(34);
+        list.add(23);
+        System.out.println(list);
     }
 }

@@ -1,4 +1,4 @@
-package com.bitongchong.test;
+package com.bitongchong.review;
 
 public class Singleton {
 	private static class SingletonHolder{

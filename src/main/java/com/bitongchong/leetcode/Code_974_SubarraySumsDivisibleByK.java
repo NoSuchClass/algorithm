@@ -7,9 +7,10 @@ package com.bitongchong.leetcode;
 public class Code_974_SubarraySumsDivisibleByK {
     public static void main(String[] args) {
         // 对于java的 % 操作的一些实例
-        System.out.println(-1 % -5);
-        System.out.println(-11 % -5);
-        System.out.println(-7 % 3);
+        System.out.println(1 % -5);
+        System.out.println(11 % -5);
+        System.out.println(7 % 3);
+        System.out.println(((7 % 3) + (3)) % (3));
         System.out.println(4 % 5 == (-11 % 5 + 5) % 5);
         System.out.println(new Code_974_SubarraySumsDivisibleByK().subarraysDivByK2(new int[]{4, 5, 0, -2, -3, 1}, 5));
     }

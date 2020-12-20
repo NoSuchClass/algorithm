@@ -10,64 +10,126 @@ import java.util.List;
  * @date 2019/12/3
  */
 public class Code_015_ThreeSum {
+//    public static void main(String[] args) {
+//        List<List<Integer>> lists = new Code_015_ThreeSum().threeSum(new int[]{0, 0, 0, 2, -1, -3323});
+//        for (List<Integer> integers :
+//                lists) {
+//            System.out.println(integers);
+//        }
+//
+//    }
+
     public List<List<Integer>> threeSum(int[] nums) {
         List<List<Integer>> res = new ArrayList<>();
         if (nums == null || nums.length < 3) {
             return res;
         }
         Arrays.sort(nums);
-        // 做题的时候命名可以简单一点，可能不能满足编程风格，但是命名过长头都是大的
-        int lIndex = 0;
-        int rIndex = 0;
-        // i < nums.length - 2; 这是因为题目是三数之和
-        for (int i = 0; i < nums.length - 2; i++) {
-            // 判断当前最大循环的最小值是否大于目标值，如果大于的话，就没有必要继续循环，
-            // 当然，由于这儿是和为零，那么直接判断num[i]是否 > 0即可
-            int minRes = nums[i] + nums[i + 1] + nums[i + 2];
-            if (minRes > 0) {
-                break;
+        for (int first = 0; first < nums.length - 2; first++) {
+            if (nums[first] > 0) {
+                return res;
             }
-            // 这儿是去重， 比如 -1 -1 0 1 2 ，当i = 1时，如果不去重，那么会出现两个 -1 0 1
-            if (i > 0 && nums[i] == nums[i - 1]) {
+            if (first > 0 && nums[first] == nums[first - 1]) {
                 continue;
             }
-            lIndex = i + 1;
-            rIndex = nums.length - 1;
-            while (lIndex < rIndex) {
-                int calcRes = nums[i] + nums[lIndex] + nums[rIndex];
-                // 因为三数相加的结果只可能 > 0 || < 0 || == 0，分别对应下面三种情况
-                if (calcRes == 0) {
-                    List<Integer> integers = Arrays.asList(nums[i], nums[lIndex], nums[rIndex]);
-                    res.add(integers);
-                    // 去重
-                    while (lIndex < rIndex && nums[lIndex] == nums[lIndex + 1]) {
-                        lIndex++;
+            int second = first + 1;
+            int third = nums.length - 1;
+            while (second < third) {
+                int curSum = nums[first] + nums[second] + nums[third];
+                if (curSum == 0) {
+                    res.add(Arrays.asList(nums[first], nums[second], nums[third]));
+                    second++;
+                    third--;
+                    while (second < third && nums[second] == nums[second - 1]) {
+                        second++;
                     }
-                    // 去重
-                    while (rIndex > lIndex && nums[rIndex] == nums[rIndex - 1]) {
-                        rIndex--;
+                    while (second < third && nums[third] == nums[third + 1]) {
+                        third--;
                     }
-                    lIndex++;
-                    rIndex--;
-                }
-                // 下面两种情况也可以去重
-                if (calcRes < 0) {
-                    lIndex++;
-                }
-                if (calcRes > 0) {
-                    rIndex--;
+                } else if (curSum > 0) {
+                    third--;
+                } else {
+                    second++;
                 }
             }
         }
         return res;
     }
 
-    public static void main(String[] args) {
-        List<List<Integer>> lists = new Code_015_ThreeSum().threeSum(new int[]{0, 0, 0});
-        for (List<Integer> integers :
-                lists) {
-            System.out.println(integers);
+    public ListNode reverseList(ListNode head) {
+        if (head == null || head.next == null) {
+            return head;
         }
+        ListNode cur = head;
+        ListNode next = head.next;
+        ListNode temp = next.next;
+        cur.next = null;
+        next.next = cur;
+        while(temp != null) {
+            cur = next;
+            next = temp;
+            temp = next.next;
+            next.next = cur;
+        }
+        return next;
+    }
 
+    public ListNode reverseList2(ListNode head) {
+        if (head == null || head.next == null) {
+            return head;
+        }
+        ListNode res = null;
+        while(head.next != null) {
+            res = head;
+            head = head.next;
+        }
+        process(head);
+        head.next = null;
+        return res;
+    }
+
+    public static ListNode reverseList3(ListNode head) {
+        if (head == null || head.next == null) {
+            return head;
+        }
+        // 这个地方的resNode从始至终都没有变过，都是该链表的最后一个节点
+        ListNode resNode = reverseList3(head.next);
+        // 这也是为什么此处的head.next.next不直接使用resNode的原因
+        head.next.next = head;
+        head.next = null;
+        return resNode;
+    }
+
+    public static void main(String[] args){
+        ListNode node1 = new ListNode(1);
+
+        ListNode node2 = new ListNode(2);
+        node1.next = node2;
+        ListNode node3 = new ListNode(3);
+        node2.next = node3;
+        ListNode node4 = new ListNode(4);
+        node3.next = node4;
+        ListNode node5 = new ListNode(5);
+        node4.next = node5;
+        node5.next = null;
+        reverseList3(node1);
+    }
+
+    public ListNode process(ListNode head) {
+        if (head.next == null) {
+            return head;
+        }
+        ListNode listNode = reverseList2(head.next);
+        listNode.next = head;
+        return head;
+    }
+    
+    public static class ListNode {
+        int val;
+        ListNode next;
+
+        ListNode(int x) {
+            val = x;
+        }
     }
 }

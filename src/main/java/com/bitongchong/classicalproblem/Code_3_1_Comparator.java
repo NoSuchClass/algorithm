@@ -26,12 +26,14 @@ public class Code_3_1_Comparator {
 	public static class IdAscComparator implements Comparator<Student>{
 		//实现Comparator接口，同时实现（重写）compare方法
 		//当返回是负数时，就会认为是方法参数中的前一个排前面，返回正数就是后一个排前面
+		@Override
 		public int compare(Student o1, Student o2) {
 			return o2.id-o1.id;
 		}
 	}
 	public static class AgeDescComparator implements Comparator<Student>{
 		//实现Comparator接口，同时实现（重写）compare方法
+		@Override
 		public int compare(Student o1, Student o2) {
 			//当返回是负数时，就会认为是前一个排前面，返回正数就是后一个排前面，返回零时，认为两个数是相等的
 			return o2.age-o1.age;

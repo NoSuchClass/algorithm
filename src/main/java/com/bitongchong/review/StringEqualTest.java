@@ -1,4 +1,4 @@
-package com.bitongchong.test;
+package com.bitongchong.review;
 
 public class StringEqualTest {
     static String a = "abc";

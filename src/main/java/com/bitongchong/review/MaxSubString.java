@@ -1,4 +1,4 @@
-package com.bitongchong.test;
+package com.bitongchong.review;
 
 public class MaxSubString {
     public String getMaxSubString(String a1, String a2) {

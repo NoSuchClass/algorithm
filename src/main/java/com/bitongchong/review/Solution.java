@@ -1,4 +1,4 @@
-package com.bitongchong.test;
+package com.bitongchong.review;
 
 import java.util.Scanner;
 
