@@ -1,25 +1,28 @@
-package com.bitongchong.review;
+package com.bitongchong.learningspace.review.day.done;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
-public class GetMax {
-    public static void main(String[] args) {
-        threeSum(new int[]{0, 0, 0, 0});
-    }
-
-    public static List<List<Integer>> threeSum(int[] nums) {
+/**
+ * @author liuyuehe
+ * @date 2020/12/20 10:44
+ */
+public class Review1220_ThreeSum {
+    public List<List<Integer>> threeSum(int[] nums) {
         List<List<Integer>> res = new ArrayList<>();
         if (nums == null || nums.length < 3) {
             return res;
         }
         Arrays.sort(nums);
         for (int first = 0; first < nums.length - 2; first++) {
-            if (nums[first] > 0) {
-                return res;
-            }
-            if (first > 0 && nums[first] == nums[first -1]) {
+            if (first > 0 && nums[first] == nums[first - 1]) {
                 continue;
             }
+            // 注意：后续类似这样的判断，如果需要查看下外层循环是否能够满足判断所需，能够以此优化代码
+//            while(first > 0 && first < nums.length - 2 && nums[first] == nums[first - 1]) {
+//                first++;
+//            }
             int second = first + 1;
             int third = nums.length - 1;
             while(second < third) {
@@ -31,7 +34,7 @@ public class GetMax {
                     while(second < third && nums[second] == nums[second - 1]) {
                         second++;
                     }
-                    while(second < third && nums[third] == nums[third + 1]) {
+                    while(third > second && nums[third] == nums[third + 1]) {
                         third--;
                     }
                 } else if (curSum > 0) {
