@@ -10,7 +10,7 @@ public class ListNode {
     public int val;
     public ListNode next;
 
-    ListNode() {
+    public ListNode() {
     }
 
     ListNode(int val) {
@@ -34,5 +34,13 @@ public class ListNode {
         node3.next = node4;
         node4.next = null;
         return node1;
+    }
+
+    @Override
+    public String toString() {
+        return "ListNode{" +
+                "val=" + val +
+                ", next=" + next +
+                '}';
     }
 }

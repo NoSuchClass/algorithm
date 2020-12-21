@@ -9,6 +9,7 @@ public class Review1220_ReverseLinkedList {
         if (head == null || head.next == null) {
             return head;
         }
+        // tips:递归中使用一个变量记录数据，只有后续操作不会变更该数据，就可以一直返回
         ListNode resNode = reverseList(head.next);
         head.next.next = head;
         head.next = null;
