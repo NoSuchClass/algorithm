@@ -1,6 +1,7 @@
-package com.bitongchong.learningspace.review.day.todo;
+package com.bitongchong.leetcode;
 
 import java.util.HashMap;
+import java.util.Map;
 import java.util.Stack;
 
 /**
@@ -33,25 +34,34 @@ public class Code_020_ValidParentheses {
     }
 
     public boolean isValidTrue(String s) {
+        if (s == null || s.length() == 0) {
+            return true;
+        }
         if (s.length() % 2 != 0) {
             return false;
         }
-        HashMap<Character, Character> regMap = new HashMap<>(4);
-        regMap.put(']', '[');
-        regMap.put('}', '{');
-        regMap.put(')', '(');
-        Stack<Character> stack = new Stack<>();
+        // 我们可以将符号类型分为左符号（'{','[','('）和右符号（'}',']',')'），实际上一个符号入栈只可能有两种情况，
+        // 一种是左符号入栈，一种是右符号入栈。
+        // 如果是左符号入栈，实际上是可以直接入栈的，因为只通过左符号还不能知道后续是否还会存在满足匹配关系的右符号
+        // 入栈。
+        // 如果是右符号入栈，则需要进行校验。校验规则是：判断离ta最近的一个符号是否为与之匹配的左符号，匹配则将栈顶
+        // 元素pop出来，代表符号已经被匹配上了，如果不匹配，则直接返回false，代表匹配失败。（如果栈顶为空，并且入
+        // 栈的是右符号，也是直接返回匹配失败的）
+        Map<Character, Character> mapper = new HashMap<>(4);
+        mapper.put('}', '{');
+        mapper.put(']', '[');
+        mapper.put(')', '(');
+
         char[] chars = s.toCharArray();
+        Stack<Character> stack = new Stack<>();
         for (char c : chars) {
-            Character character = regMap.get(c);
-            if (character != null) {
-                if (stack.isEmpty() || !character.equals(stack.peek())) {
+            if (mapper.containsKey(c)) {
+                if (stack.isEmpty() || !stack.peek().equals(mapper.get(c))) {
                     return false;
-                } else {
-                    stack.pop();
                 }
+                stack.pop();
             } else {
-                stack.add(c);
+                stack.push(c);
             }
         }
         return stack.isEmpty();
