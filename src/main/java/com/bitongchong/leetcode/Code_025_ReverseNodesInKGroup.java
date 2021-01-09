@@ -1,4 +1,4 @@
-package com.bitongchong.learningspace.doing.finish;
+package com.bitongchong.leetcode;
 
 import com.bitongchong.util.ListNode;
 

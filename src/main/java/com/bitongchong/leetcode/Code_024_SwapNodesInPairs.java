@@ -1,4 +1,4 @@
-package com.bitongchong.learningspace.doing.finish;
+package com.bitongchong.leetcode;
 
 import com.bitongchong.util.ListNode;
 
@@ -12,20 +12,18 @@ public class Code_024_SwapNodesInPairs {
         if (head == null || head.next == null) {
             return head;
         }
-        ListNode res = head.next;
-        ListNode preNode = null;
-        while(head != null && head.next != null) {
-            ListNode curNode = head;
-            ListNode nextNode = head.next;
-            if (preNode != null) {
-                preNode.next = nextNode;
-            }
-            curNode.next = nextNode.next;
-            nextNode.next = curNode;
-            preNode = curNode;
-            head = head.next;
+        ListNode cur = head;
+        ListNode pre = new ListNode();
+        while(cur != null && cur.next != null) {
+            ListNode next = cur.next;
+            ListNode temp = cur.next.next;
+            pre.next = next;
+            next.next = cur;
+            pre = cur;
+            cur.next = temp;
+            cur = temp;
         }
-        return res;
+        return pre.next;
     }
     // 递归解法，时间复杂度O(N)，空间复杂度：O(N)，其中 nn 是链表的节点数量。空间复杂度主要取决于递归调用的栈空间。
     public ListNode swapPairsRecursive(ListNode head) {
